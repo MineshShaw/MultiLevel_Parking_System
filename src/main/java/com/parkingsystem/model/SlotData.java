@@ -16,10 +16,8 @@ public class SlotData implements Comparable<SlotData> {
 
     @Override
     public int compareTo(SlotData other) {
-        // Sort primarily by distance
         int distCompare = Integer.compare(this.distance, other.distance);
         if (distCompare != 0) return distCompare;
-        // Tie-breaker: use UUID to avoid duplicates in TreeSet
         return this.slot.getId().compareTo(other.slot.getId());
     }
 }

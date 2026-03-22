@@ -34,7 +34,6 @@ public class ParkingLotBuilder {
         return ParkingLotFactory.build(this);
     }
 
-    // Getters for the Factory
     public int getNumLevels() { return numLevels; }
     public int[] getGatesPerLevel() { return gatesPerLevel; }
     public List<List<SlotInput>> getLevelsData() { return levelsData; }

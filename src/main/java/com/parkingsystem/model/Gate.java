@@ -6,7 +6,6 @@ import com.parkingsystem.model.enums.SlotType;
 
 public class Gate {
     private final int gateId;
-    // Map of SlotType to a sorted set of SlotData
     private final Map<SlotType, TreeSet<SlotData>> slotMap = new HashMap<>();
 
     public Gate(int gateId) {

@@ -12,17 +12,15 @@ public class NearestSlotAssigningStrategy implements SlotAssigningStrategy {
             return null;
         }
 
-        // Iterate through candidates (TreeSet ensures we start with the shortest distance)
         for (SlotData data : candidates) {
             Slot slot = data.getSlot();
             
-            // reserve() handles both the Level-active check and the Atomic occupancy flip
             if (slot.reserve()) {
                 System.out.println("Slot found at distance: " + data.getDistance());
                 return slot;
             }
         }
         
-        return null; // No available slots for this type from this gate
+        return null; 
     }
 }
