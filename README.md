@@ -6,19 +6,19 @@ An enterprise-grade, low-level design implementation of a multi-level parking lo
 
 The system follows a modular flow to ensure scalability and thread safety:
 
-### **Configuration (The Blueprint):** 
+### 1. **Configuration (The Blueprint):** 
 Using the ParkingLotBuilder, the client defines the physical structure: the number of levels, gates per level, and slots.
 
-### **Distance Mapping:** 
+### 2. **Distance Mapping:** 
 For every slot, a distance array is provided relative to every gate in the system. This allows the system to find the "nearest" slot regardless of which floor it’s on.
 
-### **Entry & Allocation:** 
+### 3. **Entry & Allocation:** 
 When a vehicle arrives at a gate, the SlotManager uses the NearestSlotAssigningStrategy to find the closest available slot.
 
-### **Concurrency Control:** 
+### 4. **Concurrency Control:** 
 To prevent two cars from taking the same spot at the same time, we use AtomicBoolean operations within the Slot class to ensure "first-come, first-served" at a CPU level.
 
-### **Billing & Exit:** 
+### 5. **Billing & Exit:** 
 Upon exit, the BillingService calculates the fee based on the HourlyBillingStrategy. Pricing is determined by the specific slot's rate (allowing different levels to have different costs).
 
 ---
@@ -83,14 +83,14 @@ java -cp out com.snakeladder.Main
 ---
 ## ✨ Key Features
 
-### **Thread Safety:** 
+### 1. **Thread Safety:** 
 Handled via java.util.concurrent and Atomic primitives.
 
-### **Strategy Pattern:** 
+### 2. **Strategy Pattern:** 
 Easily swap out NearestSlot with CheapestSlot or Hourly with FlatRate billing.
 
-### **Builder Pattern:** 
+### 3. **Builder Pattern:** 
 Simplifies the "hectic" process of initializing complex infrastructure.
 
-### **Scalability:** 
+### 4. **Scalability:** 
 Supports a virtually unlimited number of levels and gates.
